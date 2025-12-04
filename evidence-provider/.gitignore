@@ -1,0 +1,8 @@
+# Env files
+.deploy.env
+
+# Old deployment script
+/deploy_and_run_old.sh
+
+# Built binary
+/evidenceprovider

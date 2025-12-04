@@ -1,0 +1,19 @@
+package types
+
+// ### Request Types ###
+
+type GetTdxQuoteRequest struct {
+	Challenge string `json:"challenge"`
+}
+
+// ### Response Types ###
+
+type GetTdxQuoteResponse struct {
+	Status  string                   `json:"status"`
+	Data    AttestationQuoteEvidence `json:"data"`
+	Message string                   `json:"message,omitempty"`
+}
+
+type AttestationQuoteEvidence struct {
+	Quote map[string]any `json:"quote"`
+}

@@ -1,0 +1,6 @@
+## GLOBAL VARIABLES ##
+project_id = "your-project-id"
+region     = "europe-west4"
+zone       = "europe-west4-a"
+network    = "default"
+golden_image_project_id = "confidential-infrastructure"
