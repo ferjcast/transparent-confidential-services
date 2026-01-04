@@ -15,5 +15,7 @@ type GetTdxQuoteResponse struct {
 }
 
 type AttestationQuoteEvidence struct {
-	Quote map[string]any `json:"quote"`
+	Quote                     map[string]any `json:"quote"`
+	TlsCertificateFingerprint string         `json:"tlsCertificateFingerprint,omitempty"`
+	UserDataComposition       string         `json:"userDataComposition,omitempty"`
 }

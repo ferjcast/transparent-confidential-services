@@ -1,4 +1,3 @@
-# Build stage
 FROM golang:1.24-alpine AS builder
 
 WORKDIR /app
@@ -9,13 +8,23 @@ RUN go mod download
 COPY . ./
 RUN go build -o evidenceprovider ./cmd/evidenceprovider
 
-# Final image
 FROM alpine:latest
+
+RUN apk add --no-cache nginx
 
 WORKDIR /app
 
 COPY --from=builder /app/evidenceprovider .
 
-EXPOSE 8080
+COPY nginx.conf /etc/nginx/nginx.conf
 
-CMD ["./evidenceprovider"]
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
+RUN mkdir -p /app/ssl
+
+RUN mkdir -p /var/log/nginx
+
+EXPOSE 80 443 8080
+
+CMD ["./entrypoint.sh"]
